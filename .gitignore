@@ -1,5 +1,12 @@
 # Compiled class file
-*.class
+#*.class
+
+/.idea/*
+/lib/*
+/out/*
+/src/*
+/target/*
+/fonts/*
 
 # Log file
 *.log
