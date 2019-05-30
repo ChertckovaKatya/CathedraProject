@@ -85,9 +85,9 @@ public class CreatTestServlet extends HttpServlet {
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
-                    if (resaddTest){
-
-                    }
+//                    if (resaddTest){
+//
+//                    }
 
                 request.setAttribute("end","end");
                 request.getRequestDispatcher("/form_test/TestDemonstration.jsp").forward(request, response);

@@ -311,11 +311,12 @@ public class DatabaseHandler {
 
     public Boolean setSelectedAnswer(Integer idPassedTest,Integer idQuestionPassedTest,Integer idAnswerPassedTest,String SelfEnteredAnswer){
         String query= "INSERT INTO  selectedanswer (idPassedTest, idQuestionPassedTest, idAnswerPassedTest, `Self-enteredAnswer`)"+" VALUES (?,?,?,?)";
+        System.out.println("");
         try {
             preStm = conn.prepareStatement(query);
             preStm.setInt(1,idPassedTest);
             preStm.setInt(2,idQuestionPassedTest);
-            preStm.setInt(3,idAnswerPassedTest);
+            preStm.setInt(3, idAnswerPassedTest);
             preStm.setString(4,SelfEnteredAnswer);
             preStm.execute();
             return true;

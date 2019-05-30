@@ -8,11 +8,12 @@ import java.util.List;
 public class AddedResultTest {
 
     public Boolean addResult(List<PassedTest> list,List<Integer> idQuest, Integer idTest, Integer idUser) throws SQLException {
+        System.out.println(list.toString());
         DatabaseHandler db = new DatabaseHandler();
         Boolean passTest = db.setPassedTest(idTest,idUser,0,0,0,0);
         Integer idPassed = db.getIdPassesTest(idTest,idUser,0,0,0,0);
         for (int i=0; i<list.size(); i++){
-            if (list.get(i).getTypeQuest()==1 ||list.get(i).getTypeQuest()==3 ) {
+            if (list.get(i).getTypeQuest()==1 ) {
                 Boolean firstRes = db.setSelectedAnswer(idPassed, idQuest.get(i), list.get(i).getElementAnswerSecondType(0), null);
                     if (firstRes){
                         System.out.println("элемент первого типа успешно добавлен");
@@ -33,7 +34,7 @@ public class AddedResultTest {
                 }
             }
             if (list.get(i).getTypeQuest()==3){
-                Boolean thirdRes = db.setSelectedAnswer(idPassed, idQuest.get(i),null, list.get(i).getAnswer());
+                Boolean thirdRes = db.setSelectedAnswer(idPassed, idQuest.get(i),0, list.get(i).getAnswer());
                 if (thirdRes){
                     System.out.println("элемент третьего типа успешно добавлен");
                 }

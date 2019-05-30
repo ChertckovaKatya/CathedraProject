@@ -2,6 +2,7 @@ package servlets.filter;
 
 import cathedra.contr.DatabaseHandler;
 import cathedra.model.User;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,7 +13,7 @@ import java.sql.SQLException;
 import static java.util.Objects.nonNull;
 
 
-public class  AuthFilter implements javax.servlet.Filter {
+public class AuthFilter implements javax.servlet.Filter {
 
     @Override
     public void destroy() {
@@ -71,7 +72,7 @@ public class  AuthFilter implements javax.servlet.Filter {
         }
         }
         else {
-            req.setAttribute("result","");
+            request.setAttribute("result","no");
             request.getRequestDispatcher("/index.jsp").forward(request, response);
         }
     }
@@ -83,11 +84,11 @@ public class  AuthFilter implements javax.servlet.Filter {
 
         if (role.equals(User.ROLE.ADMIN)) {
 
-            req.getRequestDispatcher("/view_auth/admin_menu.jsp").forward(req, res);
+            req.getRequestDispatcher("/view_of_main_pages/admin_menu.jsp").forward(req, res);
 
         } else if (role.equals(User.ROLE.USER)) {
 
-            req.getRequestDispatcher("/view_auth/user_menu.jsp").forward(req, res);
+            req.getRequestDispatcher("/view_of_main_pages/user_menu.jsp").forward(req, res);
 
         } else {
             req.setAttribute("result","Error");

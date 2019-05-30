@@ -5,4 +5,4 @@ ALTER TABLE `sys_analysis_management`.`Test` CONVERT TO CHARACTER SET utf8 COLLA
 ALTER TABLE `sys_analysis_management`.`Subject` CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
 ALTER TABLE `sys_analysis_management`.`user` CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
 ALTER TABLE `sys_analysis_management`.`passedtests` CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
-ALTER TABLE `sys_analysis_management`.`selectedanswerchoices` CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+ALTER TABLE `sys_analysis_management`.`selectedanswer` CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
