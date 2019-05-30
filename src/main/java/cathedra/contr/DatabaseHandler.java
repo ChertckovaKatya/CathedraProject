@@ -1,15 +1,10 @@
 package cathedra.contr;
 
-import cathedra.model.AllTests;
-import cathedra.model.Answers;
-import cathedra.model.Test;
-import cathedra.model.User;
+import cathedra.model.*;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import static cathedra.contr.Config.*;
 
@@ -290,28 +285,25 @@ public class DatabaseHandler {
     }
 
     public Integer getIdPassesTest (Integer idTest,Integer idStudents,Integer LeadTime,Integer NumCorreсtAnswer,Integer NumIncorreсtAnswer,Integer Point) throws SQLException {
-        Integer id = null;
-        String query = "SELECT idPassed from passedtests where idTest=\""+idTest+"\" AND idStudents=\""+idStudents+"\" AND LeadTime=\""+LeadTime+"\" AND NumCorreсtAnswer=\""+NumCorreсtAnswer+"\" AND NumIncorreсtAnswer=\""+NumIncorreсtAnswer+"\" AND Point=\""+Point+"\";";
+        String query = "SELECT idPassed from passedtests where idTest="+idTest+" AND idStudents="+idStudents+" AND LeadTime="+LeadTime+" AND NumCorreсtAnswer="+NumCorreсtAnswer+" AND NumIncorreсtAnswer="+NumIncorreсtAnswer+" AND Point="+Point+";";
         ResultSet quest = resultQuery(query);
         if (quest.next()){
             return (quest.getInt("idPassed"));
         }
-        return id;
+        return null;
     }
 
     public Integer getIdStudents (Object login, Object password) throws SQLException {
-        Integer idStudents = null;
         String query_quest = "SELECT id from User where Name=\""+login+"\" AND Password=\""+password+"\";";
         ResultSet quest = resultQuery(query_quest);
         if (quest.next()){
             return (quest.getInt("id"));
         }
-        return idStudents;
+        return null;
     }
 
     public Boolean setSelectedAnswer(Integer idPassedTest,Integer idQuestionPassedTest,Integer idAnswerPassedTest,String SelfEnteredAnswer){
         String query= "INSERT INTO  selectedanswer (idPassedTest, idQuestionPassedTest, idAnswerPassedTest, `Self-enteredAnswer`)"+" VALUES (?,?,?,?)";
-        System.out.println("");
         try {
             preStm = conn.prepareStatement(query);
             preStm.setInt(1,idPassedTest);
@@ -326,5 +318,64 @@ public class DatabaseHandler {
 
         }
     }
+
+    public Integer getNumCorrectFirstTypeAnswers(Integer idPassedTest) throws SQLException {
+        String query = "select SUM(Mark) as sum\n" +
+                "from answer\n" +
+                "where idAnswer IN (select idAnswerPassedTest from selectedanswer where idPassedTest="+idPassedTest+")\n" +
+                "AND idQuestionAnswer IN (select idQuestions from questions where TypeQues=1);";
+        ResultSet result = resultQuery(query);
+        if (result.next()){
+            return (result.getInt("sum"));
+        }
+        return null;
+
+    }
+
+    public List getCorrectSecondTypeAnswers(Integer idPassedTest) throws SQLException{
+        List<QuestionsAnswersStudent> answers = new ArrayList();
+        String query = "select  ansCorrect, ansStudent\n" +
+                "from\n" +
+                "(SELECT idQuestionAnswer, group_concat(distinct idAnswer) as ansCorrect\n" +
+                "  from  answer\n" +
+                "    join questions on (answer.idQuestionAnswer = questions.idQuestions and questions.TypeQues=2)\n" +
+                "    join selectedanswer on (answer.idQuestionAnswer = selectedanswer.idQuestionPassedTest and selectedanswer.idPassedTest = "+idPassedTest+")\n" +
+                "  WHERE\n" +
+                "    answer.Mark!=0\n" +
+                "  group by idQuestionAnswer)tabl1\n" +
+                "join (SELECT idQuestionPassedTest,  group_concat(distinct idAnswerPassedTest) AS ansStudent\n" +
+                "from selectedanswer\n" +
+                "join questions on (selectedanswer.idQuestionPassedTest = questions.idQuestions and  questions.TypeQues=2 )\n" +
+                "WHERE selectedanswer.idPassedTest = "+idPassedTest+"\n" +
+                "GROUP BY  idQuestionPassedTest) tabl2 on (tabl1.idQuestionAnswer = tabl2.idQuestionPassedTest);";
+        ResultSet result = resultQuery(query);
+        while (result.next()){
+            answers.add(new QuestionsAnswersStudent(result.getString("ansCorrect"),result.getString("ansStudent")));
+        }
+        return answers;
+    }
+
+    public List getCorrectThirdTypeAnswers(Integer idPassedTest) throws SQLException {
+        List<QuestionsAnswersStudent> answers = new ArrayList();
+        String query = "select  ansCorrect, ansStudent\n" +
+                "from\n" +
+                "  (select answer.idQuestionAnswer as idOuest, answer.AnswerWording AS ansCorrect\n" +
+                "    from answer\n" +
+                "      join questions ON answer.idQuestionAnswer = questions.idQuestions\n" +
+                "        join selectedanswer on (answer.idQuestionAnswer = selectedanswer.idQuestionPassedTest and selectedanswer.idPassedTest = \""+idPassedTest+"\")\n" +
+                "   WHERE questions.TypeQues = 3) AS tabl1\n" +
+                "join\n" +
+                "  (SELECT idQuestionPassedTest,`Self-enteredAnswer` AS ansStudent\n" +
+                "FROM selectedanswer\n" +
+                "WHERE idPassedTest="+idPassedTest+" AND idAnswerPassedTest=0) AS tabl2\n" +
+                " on (tabl1.idOuest = tabl2.idQuestionPassedTest);";
+        ResultSet result = resultQuery(query);
+        while (result.next()){
+            answers.add(new QuestionsAnswersStudent(result.getString("ansCorrect"),result.getString("ansStudent")));
+        }
+        return answers;
+    }
+
+
 
 }

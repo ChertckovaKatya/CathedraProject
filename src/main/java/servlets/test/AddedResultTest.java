@@ -1,9 +1,11 @@
 package servlets.test;
 
 import cathedra.contr.DatabaseHandler;
+import cathedra.model.QuestionsAnswersStudent;
 
 import java.sql.SQLException;
 import java.util.List;
+
 
 public class AddedResultTest {
 
@@ -43,7 +45,18 @@ public class AddedResultTest {
                 }
             }
         }
-
+        Integer result = getNumCorrectAnswer(idPassed);
         return true;
+    }
+
+    public Integer getNumCorrectAnswer (Integer idPassedTest) throws SQLException {
+        DatabaseHandler db = new DatabaseHandler();
+        Integer numCorrectMarkFirstType = db.getNumCorrectFirstTypeAnswers(idPassedTest);
+        List<QuestionsAnswersStudent> answerCorrectAndStrudentSecondType = db.getCorrectSecondTypeAnswers(idPassedTest);
+        List<QuestionsAnswersStudent> answerCorrectAndStudentThirdType = db.getCorrectThirdTypeAnswers(idPassedTest);
+        System.out.println(numCorrectMarkFirstType);
+        System.out.println(answerCorrectAndStrudentSecondType.toString());
+        System.out.println(answerCorrectAndStudentThirdType.toString());
+        return 0;
     }
 }
