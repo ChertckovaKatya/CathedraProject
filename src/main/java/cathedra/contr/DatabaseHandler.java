@@ -7,7 +7,9 @@ import cathedra.model.User;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static cathedra.contr.Config.*;
 
@@ -217,7 +219,7 @@ public class DatabaseHandler {
         return quantity;
     }
 
-    public ArrayList<Integer> getTypeQuestions(Integer idTest) throws SQLException {
+    public ArrayList getTypeQuestions(Integer idTest) throws SQLException {
         ArrayList<Integer> list_types = new ArrayList<>();
         String query_type = "SELECT TypeQues FROM questions where idTestQuestions=\""+idTest+"\" ;";
 //        System.out.println("SELECT TypeQues FROM questions where idTestQuestions=\""+idTest+"\" ;");
@@ -230,7 +232,7 @@ public class DatabaseHandler {
         return list_types;
     }
 
-    public List<Integer> getidQuestions(Integer idTest) throws SQLException {
+    public List getidQuestions(Integer idTest) throws SQLException {
         String query_idQuest = "select idQuestions from questions where idTestQuestions=\"" + idTest + "\";";
         ResultSet list_idOuest = resultQuery(query_idQuest);
         List<Integer> idQuest = new ArrayList<>();
@@ -239,14 +241,14 @@ public class DatabaseHandler {
         }
         return idQuest;
     }
-    public List<String> getAnswerWording(Integer idTest,Integer idQuest) throws SQLException {
-        List<String> answer = new ArrayList<>();
-       String query_answer = "SELECT  answer.AnswerWording\n" +
+    public List getAnswerWording(Integer idTest, Integer idQuest) throws SQLException {
+        List<Answers> answer = new ArrayList<>();
+       String query_answer = "SELECT  answer.idAnswer, answer.AnswerWording\n" +
                 "FROM answer join questions ON answer.idQuestionAnswer = questions.idQuestions\n" +
                 "WHERE idTestQuestions=\""+idTest+"\" AND idQuestionAnswer = \""+idQuest+"\";";
         ResultSet list_answer = resultQuery(query_answer);
         while(list_answer.next()){
-            answer.add( list_answer.getString("answer.AnswerWording"));
+            answer.add(new Answers(list_answer.getInt("answer.idAnswer"), list_answer.getString("answer.AnswerWording")));
         }
         return answer;
     }
@@ -264,9 +266,64 @@ public class DatabaseHandler {
     public List getQuestAnswer(Integer idTest, Integer idOuest) throws SQLException {
         List <Test> list_quest_answer =  new ArrayList<>();
         String quest = getQuestionWording(idTest,idOuest);
-        List<String> answer = getAnswerWording(idTest,idOuest);
+        List answer = getAnswerWording(idTest,idOuest);
         list_quest_answer.add(new Test(quest,answer));
         return list_quest_answer;
+    }
+
+    public Boolean setPassedTest(Integer idTest,Integer idStudents,Integer LeadTime,Integer NumCorreсtAnswer,Integer NumIncorreсtAnswer,Integer Point){
+        String query= "INSERT INTO passedtests (idTest, idStudents, LeadTime, NumCorreсtAnswer, NumIncorreсtAnswer, Point)"+" VALUES (?,?,?,?,?,?)";
+        try {
+            preStm = conn.prepareStatement(query);
+            preStm.setInt(1,idTest);
+            preStm.setInt(2,idStudents);
+            preStm.setInt(3,LeadTime);
+            preStm.setInt(4,NumCorreсtAnswer);
+            preStm.setInt(5,NumIncorreсtAnswer);
+            preStm.setInt(6,Point);
+            preStm.execute();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public Integer getIdPassesTest (Integer idTest,Integer idStudents,Integer LeadTime,Integer NumCorreсtAnswer,Integer NumIncorreсtAnswer,Integer Point) throws SQLException {
+        Integer id = null;
+        String query = "SELECT idPassed from passedtests where idTest=\""+idTest+"\" AND idStudents=\""+idStudents+"\" AND LeadTime=\""+LeadTime+"\" AND NumCorreсtAnswer=\""+NumCorreсtAnswer+"\" AND NumIncorreсtAnswer=\""+NumIncorreсtAnswer+"\" AND Point=\""+Point+"\";";
+        ResultSet quest = resultQuery(query);
+        if (quest.next()){
+            return (quest.getInt("idPassed"));
+        }
+        return id;
+    }
+
+    public Integer getIdStudents (Object login, Object password) throws SQLException {
+        Integer idStudents = null;
+        String query_quest = "SELECT id from User where Name=\""+login+"\" AND Password=\""+password+"\";";
+        ResultSet quest = resultQuery(query_quest);
+        if (quest.next()){
+            return (quest.getInt("id"));
+        }
+        return idStudents;
+    }
+
+    public Boolean setSelectedAnswer(Integer idPassedTest,Integer idQuestionPassedTest,Integer idAnswerPassedTest,String SelfEnteredAnswer){
+        String query= "INSERT INTO  selectedanswer (idPassedTest, idQuestionPassedTest, idAnswerPassedTest, `Self-enteredAnswer`)"+" VALUES (?,?,?,?)";
+        try {
+            preStm = conn.prepareStatement(query);
+            preStm.setInt(1,idPassedTest);
+            preStm.setInt(2,idQuestionPassedTest);
+            preStm.setInt(3,idAnswerPassedTest);
+            preStm.setString(4,SelfEnteredAnswer);
+            preStm.execute();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+
+        }
     }
 
 }

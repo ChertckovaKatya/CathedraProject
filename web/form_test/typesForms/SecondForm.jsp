@@ -17,19 +17,20 @@
 </head>
 <body>
 <c:set var="num" scope="request" value="${idTest}" />
-<form action="testdemonstration?type=second&idTest=<c:out value="${num}"/>" method="post">
+<c:set var="numquest" scope="request" value="${idQuestion}" />
+<form action="testdemonstration?type=2&idTest=<c:out value="${num}"/>" method="post">
     <c:forEach var="res" items="${result}">
         <p><b> <c:out value="${res.question}"/></b></p>
         <c:forEach var="ans" items="${res.answers}">
             <div class="form-check">
-                <input class="form-check-input" name="answer" type="checkbox" value="<c:out value="${ans}"/>" id="defaultCheck1">
+                <input class="form-check-input" name="answer" type="checkbox" value="<c:out value="${ans.idAnswer}"/>" id="defaultCheck1">
                 <label class="form-check-label" for="defaultCheck1">
-                    <c:out value="${ans}"/>
+                    <c:out value="${ans.value}"/>
                 </label>
             </div>
         </c:forEach>
     </c:forEach>
-    <button type="second"> Ответить</button>
+    <button type="2"> Ответить</button>
 </form>
 
 </body>

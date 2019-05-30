@@ -15,14 +15,15 @@
     <title>Title</title>
 </head>
 <body>
-<c:set var="num" scope="request" value="${idTest}" />
-<form method="post" action="testdemonstration?type=third&idTest=<c:out value="${num}"/>" >
-    <c:forEach var="res" items="${result}">
-        <p><b> <c:out value="${res.question}"/></b></p>
-    <input type="text" class="form-control" required="true"  name="answer" placeholder="Ответ">
-    </c:forEach>
-    <button type="third"> Ответить</button>
-</form>
+    <c:set var="num" scope="request" value="${idTest}" />
+        <c:set var="numquest" scope="request" value="${idQuestion}" />
+            <form method="post" action="testdemonstration?type=3&idTest=<c:out value="${num}"/>" >
+                <c:forEach var="res" items="${result}">
+                    <p><b> <c:out value="${res.question}"/></b></p>
+                    <input type="text" class="form-control" required="true"  name="answer" placeholder="Ответ">
+                </c:forEach>
+                <button type="3"> Ответить</button>
+            </form>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>

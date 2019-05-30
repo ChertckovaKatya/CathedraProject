@@ -4,15 +4,14 @@ import java.util.List;
 
 public class Test {
      private String question;
-     private List<String> answers;
+     private List<Answers> answers;
 
-    public Test(String question, List<String> answers) {
+
+    public Test(String question, List<Answers> answers) {
         this.question = question;
         this.answers = answers;
     }
 
-    public Test() {
-    }
 
     public String getQuestion() {
         return question;
@@ -22,11 +21,12 @@ public class Test {
         this.question = question;
     }
 
-    public List<String> getAnswers() {
+
+    public List<Answers> getAnswers() {
         return answers;
     }
 
-    public void setAnswers(List<String> answers) {
+    public void setAnswers(List<Answers> answers) {
         this.answers = answers;
     }
 
