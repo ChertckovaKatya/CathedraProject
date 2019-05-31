@@ -96,14 +96,16 @@ public class DatabaseHandler {
         return role;
     }
 
-    public Boolean addTest(Integer idSubjectTest, Integer QuantityQuestions,Integer LeadTime, Integer TotalScore){
-        String query= "INSERT INTO test (idSubjectTest, QuantityQuestions, LeadTime, TotalScore)"+" VALUES (?,?,?,?)";
+    public Boolean addTest(Integer idSubjectTest,String TitleTest, Integer QuantityQuestions,Integer LeadTime, Integer TotalScore, Integer PointsForOneCorrectAnswer){
+        String query= "INSERT INTO test (idSubjectTest,TitleTest, QuantityQuestions, LeadTime,TotalScore,PointsForOneCorrectAnswer)"+" VALUES (?,?,?,?,?,?)";
         try {
             preStm = conn.prepareStatement(query);
             preStm.setInt(1,idSubjectTest);
-            preStm.setInt(2,QuantityQuestions);
-            preStm.setInt(3,LeadTime);
-            preStm.setInt(4,TotalScore);
+            preStm.setString(2,TitleTest);
+            preStm.setInt(3,QuantityQuestions);
+            preStm.setInt(4,LeadTime);
+            preStm.setInt(5,TotalScore);
+            preStm.setInt(6,PointsForOneCorrectAnswer);
             preStm.execute();
 //            conn.close();
             return true;
@@ -128,9 +130,9 @@ public class DatabaseHandler {
         return idSubject;
     }
 
-    public Integer defineTheidTest (Integer idSubjectTest, Integer QuantityQuestions,Integer LeadTime, Integer TotalScore) throws SQLException {
+    public Integer defineTheidTest (Integer idSubjectTest,String TitleTest, Integer QuantityQuestions,Integer LeadTime, Integer TotalScore,Integer PointsForOneCorrectAnswer) throws SQLException {
         Integer idTest = null;
-        String query = "SELECT idTest FROM test where idSubjectTest="+idSubjectTest+" AND QuantityQuestions="+QuantityQuestions+" AND LeadTime="+LeadTime+" AND TotalScore="+TotalScore+" ORDER\n" +
+        String query = "SELECT idTest FROM test where idSubjectTest="+idSubjectTest+"  AND TitleTest=\""+TitleTest+"\" AND QuantityQuestions="+QuantityQuestions+" AND LeadTime="+LeadTime+" AND TotalScore="+TotalScore+" AND PointsForOneCorrectAnswer = "+PointsForOneCorrectAnswer+"ORDER\n" +
                 "    BY idTest DESC LIMIT 1;";
         ResultSet id = resultQuery(query);
         if(id.next()){
@@ -376,6 +378,35 @@ public class DatabaseHandler {
         return answers;
     }
 
+    public int[] getOfNumPointsCorrectAnswer (Integer idTest) throws SQLException {
+        String query = "select TotalScore,PointsForOneCorrectAnswer FROM test WHERE idTest = "+idTest+";";
+        ResultSet result = resultQuery(query);
+        int[] res = new int[2];
+        if (result.next()){
+            res[0] = result.getInt("TotalScore");
+            res[1] = result.getInt("PointsForOneCorrectAnswer");
+            return res ;
+        }
+        return null;
+    }
+
+    public boolean updateDatePassedTest(Integer LeadTime, Integer NumCorreсtAnswer, Integer NumIncorreсtAnswer, Integer Points, Integer idPassed){
+        String query = "UPDATE passedtests SET LeadTime = ?, NumCorreсtAnswer = ?, NumIncorreсtAnswer= ?, Point = ? WHERE idPassed = ? ;";
+        try {
+            preStm = conn.prepareStatement(query);
+            preStm.setInt(1,LeadTime);
+            preStm.setInt(2,NumCorreсtAnswer);
+            preStm.setInt(3,NumIncorreсtAnswer);
+            preStm.setInt(4,Points);
+            preStm.setInt(5,idPassed);
+            preStm.execute();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+
+        }
+    }
 
 
 }

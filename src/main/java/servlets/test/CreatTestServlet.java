@@ -17,7 +17,7 @@ import java.util.List;
 @WebServlet(name = "CreatTestServlet")
 public class CreatTestServlet extends HttpServlet {
     private Integer quantity_questions = null;
-    private Integer i =0;
+    private int i = 0;
     private ArrayList<Integer> idTypeQuestions = new ArrayList<>();
     private List<Integer> idQuestions = new ArrayList<>();
     private Integer idTest = null;
@@ -77,7 +77,7 @@ public class CreatTestServlet extends HttpServlet {
                 final HttpSession session = request.getSession();
 
                 Integer idUser = null;
-                Boolean resaddTest = false;
+                Integer resaddTest = null;
                 try {
                     idUser = db.getIdStudents(session.getAttribute("login"),session.getAttribute("password"));
                     AddedResultTest resTest = new AddedResultTest();
@@ -85,9 +85,9 @@ public class CreatTestServlet extends HttpServlet {
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
-//                    if (resaddTest){
-//
-//                    }
+                    if (resaddTest!=null){
+                        request.setAttribute("procent",resaddTest);
+                }
 
                 request.setAttribute("end","end");
                 request.getRequestDispatcher("/form_test/TestDemonstration.jsp").forward(request, response);

@@ -34,7 +34,8 @@
                       <li><a href="#"> Главная </a></li>
                       <li><a href="#"> Новости </a></li>
                       <li><a href="#"> Галерея </a></li>
-                      <li><a href="/UploadServlet"> Создать тесты </a></li>
+                      <li><a href="/UploadServlet"> Создать тест </a></li>
+                        <li><a href="/alltest"> Просмотреть тесты </a></li>
                     </ul>
                     <form action="" class="nav navbar-nav navbar-right">
                         <li><a href="/logout"> Выйти </a></li>

@@ -28,12 +28,14 @@ public class FileProcessing {
                 String[] parametersTest = first.split("\\|");
                 String Subject = parametersTest[0];                                 //Название предмета
                 Integer idSubject = db.defineTheidSubject(Subject);                   //определяет номер предмета
-                Integer NumberOfQuestions = Integer.valueOf(parametersTest[1]);      // Количество вопросов
-                Integer LeadTime = Integer.valueOf(parametersTest[2]);               // Время выполнения теста
-                Integer TotalScore = Integer.valueOf(parametersTest[3]);             //Общий балл за тест
+                String titleTest = parametersTest[1];                                    //Название теста
+                Integer NumberOfQuestions = Integer.valueOf(parametersTest[2]);      // Количество вопросов
+                Integer LeadTime = Integer.valueOf(parametersTest[3]);               // Время выполнения теста
+                Integer TotalScore = Integer.valueOf(parametersTest[4]);             //Общий балл за тест
+                Integer pointsForOneAnswer = Integer.valueOf(parametersTest[5]);
                 if (idSubject!=null) {
-                    Boolean TestAdded = db.addTest(idSubject, NumberOfQuestions, LeadTime, TotalScore); // добавляем данные теста
-                    Integer idTest = db.defineTheidTest(idSubject, NumberOfQuestions, LeadTime, TotalScore);  // выясняем id теста, который только что добавили
+                    Boolean TestAdded = db.addTest(idSubject,titleTest, NumberOfQuestions, LeadTime, TotalScore,pointsForOneAnswer); // добавляем данные теста
+                    Integer idTest = db.defineTheidTest(idSubject,titleTest, NumberOfQuestions, LeadTime, TotalScore,pointsForOneAnswer);  // выясняем id теста, который только что добавили
                     if (TestAdded && idTest!=null) {
                         if (NumberOfQuestions>(lines.size()-1)){
                             size = lines.size()-1;

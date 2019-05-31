@@ -32,7 +32,6 @@
                       <li><a href="#"> Главная </a></li>
                       <li><a href="#"> Новости </a></li>
                       <li><a href="#"> Галерея </a></li>
-                      <li><a href="#"> Пройти тесты </a></li>
                         <li><a href="/alltest"> Все тесты </a></li>
                     </ul>
                     <form action="" class="nav navbar-nav navbar-right">

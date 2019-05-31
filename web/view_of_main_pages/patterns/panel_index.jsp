@@ -31,8 +31,8 @@
                             <li><a href="/test_page"> Главная </a></li>
                             <li><a href="#"> Новости </a></li>
                             <li><a href="#"> Галерея </a></li>
-                            <li><a href="/testdemonstration"> Тест </a></li>
-                            <li><a href="/alltest"> Все тесты </a></li>
+                            <%--<li><a href="/testdemonstration"> Тест </a></li>--%>
+                            <%--<li><a href="/alltest"> Все тесты </a></li>--%>
                         </ul>
                         <form method="post" action="" class="form-inline navbar-form navbar-right">
                             <div class="form-group">

@@ -12,23 +12,9 @@
     <title>Title</title>
 </head>
 <body>
-    <%--<c:set var="num" scope="request" value="${id}" />--%>
-        <%--<c:if test = "${num == 1}">--%>
-             <%--<c:import url='typesForms/FirstForm.jsp' charEncoding="utf-8"  />--%>
-        <%--</c:if>--%>
-        <%--<c:if test = "${num == 2}">--%>
-            <%--<c:import url='typesForms/SecondForm.jsp' charEncoding="utf-8"  />--%>
-        <%--</c:if>--%>
-        <%--<c:if test = "${num == 3}">--%>
-            <%--<c:import url='typesForms/ThirdForm.jsp' charEncoding="utf-8" />--%>
-        <%--</c:if>--%>
-    <%--<c:set var="out" scope="request" value="${end}" />--%>
-    <%--<c:if test = "${out =! null}">--%>
-        <%--<p>Тест завершен!!!</p>--%>
-    <%--</c:if>--%>
 
     <c:set var="num" scope="request" value="${id}" />
-    <c:out value="${num}"/>
+    <%--<c:out value="${num}"/>--%>
     <c:choose>
         <c:when test="${num == 1}">
             <c:import url='typesForms/FirstForm.jsp' charEncoding="utf-8"  />
@@ -40,7 +26,8 @@
             <c:import url='typesForms/ThirdForm.jsp' charEncoding="utf-8" />
         </c:when>
         <c:otherwise>
-            <p>Тест завершен!!!</p>
+            <c:set var="proc" scope="request" value="${procent}" />
+            <p>Тест завершен!!! Вы ответили верно на  <c:out value="${proc}"/> %</p>
         </c:otherwise>
     </c:choose>
 
