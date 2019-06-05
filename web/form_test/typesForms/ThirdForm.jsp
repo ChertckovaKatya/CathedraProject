@@ -20,9 +20,13 @@
             <form method="post" action="testdemonstration?type=3&idTest=<c:out value="${num}"/>" >
                 <c:forEach var="res" items="${result}">
                     <p><b> <c:out value="${res.question}"/></b></p>
-                    <input type="text" class="form-control" required="true"  name="answer" placeholder="Ответ">
+                    <div class="form-group">
+                        <input type="text" class="form-control"  required="true" id="exampleInputPassword1" name="answer" placeholder="Ответ">
+                    </div>
+                    <%--<input type="text" class="form-control" required="true"  name="answer" placeholder="Ответ">--%>
                 </c:forEach>
-                <button type="3"> Ответить</button>
+                <%--<button type="3"> Ответить</button>--%>
+                <button type="3" class="btn btn-primary">Ответить</button>
             </form>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>

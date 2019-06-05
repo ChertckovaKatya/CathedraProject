@@ -18,7 +18,7 @@ import java.util.List;
 public class CreatTestServlet extends HttpServlet {
     private Integer quantity_questions = null;
     private int i = 0;
-    private ArrayList<Integer> idTypeQuestions = new ArrayList<>();
+    private ArrayList<Integer> idTypeQuestions = new ArrayList<Integer>();
     private List<Integer> idQuestions = new ArrayList<>();
     private Integer idTest = null;
     private List<Test> quest_answer;
@@ -49,6 +49,7 @@ public class CreatTestServlet extends HttpServlet {
     }
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         idTest = Integer.valueOf(request.getParameter("idTest"));
         System.out.println("idTest = "+idTest);
             try {
@@ -63,6 +64,7 @@ public class CreatTestServlet extends HttpServlet {
 
             if ( i < quantity_questions) {
                 request.setAttribute("id", idTypeQuestions.get(i));
+                request.setAttribute("", idTypeQuestions.get(i));
                 try {
                     quest_answer = db.getQuestAnswer(idTest,idQuestions.get(i));
                     request.setAttribute("idQuestion",idQuestions.get(i));
@@ -74,11 +76,12 @@ public class CreatTestServlet extends HttpServlet {
                 request.getRequestDispatcher("/form_test/TestDemonstration.jsp").forward(request, response);
             }
             else {
-                final HttpSession session = request.getSession();
+
 
                 Integer idUser = null;
                 Integer resaddTest = null;
                 try {
+                    final HttpSession session = request.getSession();
                     idUser = db.getIdStudents(session.getAttribute("login"),session.getAttribute("password"));
                     AddedResultTest resTest = new AddedResultTest();
                     resaddTest = resTest.addResult(results,idQuestions,idTest,idUser);

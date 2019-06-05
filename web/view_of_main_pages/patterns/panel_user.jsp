@@ -32,7 +32,8 @@
                       <li><a href="#"> Главная </a></li>
                       <li><a href="#"> Новости </a></li>
                       <li><a href="#"> Галерея </a></li>
-                        <li><a href="/alltest"> Все тесты </a></li>
+                        <li><a href="/alltestuser"> Тесты </a></li>
+                        <li><a href="/allresults"> Результаты </a></li>
                     </ul>
                     <form action="" class="nav navbar-nav navbar-right">
                         <li><a href="/logout"> Выйти </a></li>

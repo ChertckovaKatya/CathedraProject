@@ -27,7 +27,7 @@ public class FileProcessing {
                 String first = lines.get(0);
                 String[] parametersTest = first.split("\\|");
                 String Subject = parametersTest[0];                                 //Название предмета
-                Integer idSubject = db.defineTheidSubject(Subject);                   //определяет номер предмета
+                Integer idSubject = db.defineTheidSubject(Subject.trim());                   //определяет номер предмета
                 String titleTest = parametersTest[1];                                    //Название теста
                 Integer NumberOfQuestions = Integer.valueOf(parametersTest[2]);      // Количество вопросов
                 Integer LeadTime = Integer.valueOf(parametersTest[3]);               // Время выполнения теста
@@ -49,11 +49,11 @@ public class FileProcessing {
                             Integer typeQuestions = Integer.valueOf(QuestionsAnswer[0]); // тип вопроса
                             String Questions = QuestionsAnswer[1]; // вопрос
                             Integer NumberAnswer = Integer.valueOf(QuestionsAnswer[2]);
-                            Boolean QuestionsAdded = db.addQuestions(idTest, Questions, typeQuestions); // добавляем тип вопроса и его формулировку
+                            Boolean QuestionsAdded = db.addQuestions(idTest, Questions, typeQuestions,NumberAnswer); // добавляем тип вопроса и его формулировку
 
                             if (QuestionsAdded) {
 
-                                Integer idQuestions = db.defineTheidQuestions(idTest, Questions, typeQuestions); //выясняем id вопроса, который только что добавили
+                                Integer idQuestions = db.defineTheidQuestions(idTest, Questions, typeQuestions,NumberAnswer); //выясняем id вопроса, который только что добавили
                                 if (idQuestions !=null) {
                                     for (int j = 3; j < (NumberAnswer * 2) + 2; j = j + 2) {
                                         String Answer = QuestionsAnswer[j];  //вариант ответа

@@ -11,7 +11,7 @@ import java.util.stream.IntStream;
 
 public class AddedResultTest {
 
-    public Integer addResult(List<PassedTest> list,List<Integer> idQuest, Integer idTest, Integer idUser) throws SQLException {
+    public Integer addResult(List<PassedTest> list, List<Integer> idQuest, Integer idTest, Integer idUser) throws SQLException {
         System.out.println(list.toString());
         DatabaseHandler db = new DatabaseHandler();
         Boolean passTest = db.setPassedTest(idTest,idUser,0,0,0,0);

@@ -9,7 +9,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
-    <title>Title</title>
+        <title>Title</title>
 </head>
 <body>
 
@@ -28,6 +28,7 @@
         <c:otherwise>
             <c:set var="proc" scope="request" value="${procent}" />
             <p>Тест завершен!!! Вы ответили верно на  <c:out value="${proc}"/> %</p>
+            <li><a href="/alltestuser"> Вернуться к тестам </a></li>
         </c:otherwise>
     </c:choose>
 

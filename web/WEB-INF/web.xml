@@ -3,7 +3,6 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
-
     <filter>
         <filter-name>AuthFilter</filter-name>
         <filter-class>servlets.filter.AuthFilter</filter-class>
@@ -41,27 +40,27 @@
     </servlet-mapping>
 
     <!--<context-param>-->
-        <!--<param-name>URL</param-name>-->
-        <!--<param-value>jdbc:mysql://localhost:3306/</param-value>-->
+    <!--<param-name>URL</param-name>-->
+    <!--<param-value>jdbc:mysql://localhost:3306/</param-value>-->
     <!--</context-param>-->
     <!--<context-param>-->
-        <!--<param-name>dbName</param-name>-->
-        <!--<param-value>sys_analysis_management</param-value>-->
+    <!--<param-name>dbName</param-name>-->
+    <!--<param-value>sys_analysis_management</param-value>-->
     <!--</context-param>-->
     <!--<context-param>-->
-        <!--<param-name>addition</param-name>-->
-        <!--<param-value>?useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC</param-value>-->
+    <!--<param-name>addition</param-name>-->
+    <!--<param-value>?useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC</param-value>-->
     <!--</context-param>-->
     <!--<context-param>-->
-        <!--<param-name>dbUser</param-name>-->
-        <!--<param-value>root</param-value>-->
+    <!--<param-name>dbUser</param-name>-->
+    <!--<param-value>root</param-value>-->
     <!--</context-param>-->
     <!--<context-param>-->
-        <!--<param-name>dbPass</param-name>-->
-        <!--<param-value> </param-value>-->
+    <!--<param-name>dbPass</param-name>-->
+    <!--<param-value> </param-value>-->
     <!--</context-param>-->
     <!--<listener>-->
-        <!--<listener-class>Servlets.Serv.ContextListener</listener-class>-->
+    <!--<listener-class>Servlets.Serv.ContextListener</listener-class>-->
     <!--</listener>-->
 
     <servlet>
@@ -102,5 +101,21 @@
         <url-pattern>/alltest</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>OutputTestResultServlet</servlet-name>
+        <servlet-class>servlets.test.OutputTestResultServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>OutputTestResultServlet</servlet-name>
+        <url-pattern>/allresults</url-pattern>
+    </servlet-mapping>
 
+    <servlet>
+        <servlet-name>OutrutTestServlet</servlet-name>
+        <servlet-class>servlets.test.OutrutTestServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>OutrutTestServlet</servlet-name>
+        <url-pattern>/alltestuser</url-pattern>
+    </servlet-mapping>
 </web-app>

@@ -72,6 +72,7 @@ public class UploadServlet extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
 
+
             while (i.hasNext()) {
                 FileItem fi = (FileItem) i.next();
                 if (!fi.isFormField()) {
@@ -104,6 +105,7 @@ public class UploadServlet extends HttpServlet {
                         }
                 }
             }
+            out.println("<a href=\"/alltest\"> Next </a>");
             out.println("</body>");
             out.println("</html>");
         } catch (Exception ex) {
@@ -113,7 +115,7 @@ public class UploadServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/WEB-INF/view/files/download.jsp").forward(request, response);
+        request.getRequestDispatcher("/view_of_main_pages/download.jsp").forward(request, response);
 //            throw new ServletException("GET method used with " +
 //                    getClass( ).getName( )+": POST method required.");
     }

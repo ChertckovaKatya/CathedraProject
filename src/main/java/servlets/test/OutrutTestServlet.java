@@ -12,12 +12,13 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-@WebServlet(name = "OutputALLTestsServlet")
-public class OutputALLTestsServlet extends HttpServlet {
+@WebServlet(name = "OutrutTestServlet")
+public class OutrutTestServlet extends HttpServlet {
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request,response);
     }
-
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         DatabaseHandler db = new DatabaseHandler();
         List<AllTests> tests = null;
@@ -27,6 +28,6 @@ public class OutputALLTestsServlet extends HttpServlet {
             e.printStackTrace();
         }
         request.setAttribute("tests",tests);
-        request.getRequestDispatcher("/view_of_main_pages/AllTests.jsp").forward(request, response);
+        request.getRequestDispatcher("/view_of_main_pages/AllTestsUser.jsp").forward(request, response);
     }
 }

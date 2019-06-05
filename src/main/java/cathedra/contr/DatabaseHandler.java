@@ -14,7 +14,7 @@ public class DatabaseHandler {
     private ResultSet result;
     private PreparedStatement preStm;
     public static Statement dbConnection;
-    private static List<String> answer_out = new ArrayList<>();
+    private static List<String> answer_out = new ArrayList<String>();
 
     public DatabaseHandler() {
 //        String myDriver = "com.mysql.cj.jdbc.Driver";
@@ -116,9 +116,10 @@ public class DatabaseHandler {
     }
 
     public Integer defineTheidSubject (String subject) throws SQLException {
+        System.out.println(subject);
         Integer idSubject = null;
-        String query= "SELECT idSubject FROM subject WHERE SubjectName=\""+subject+"\"";
-//        System.out.println(query);
+        String query= "SELECT idSubject FROM subject WHERE SubjectName=\""+subject+"\";";
+        System.out.println(query);
         ResultSet id = resultQuery(query);
         if (id.next()) {
             idSubject = id.getInt("idSubject");
@@ -132,7 +133,7 @@ public class DatabaseHandler {
 
     public Integer defineTheidTest (Integer idSubjectTest,String TitleTest, Integer QuantityQuestions,Integer LeadTime, Integer TotalScore,Integer PointsForOneCorrectAnswer) throws SQLException {
         Integer idTest = null;
-        String query = "SELECT idTest FROM test where idSubjectTest="+idSubjectTest+"  AND TitleTest=\""+TitleTest+"\" AND QuantityQuestions="+QuantityQuestions+" AND LeadTime="+LeadTime+" AND TotalScore="+TotalScore+" AND PointsForOneCorrectAnswer = "+PointsForOneCorrectAnswer+"ORDER\n" +
+        String query = "SELECT idTest FROM test where idSubjectTest="+idSubjectTest+"  AND TitleTest=\""+TitleTest+"\" AND QuantityQuestions="+QuantityQuestions+" AND LeadTime="+LeadTime+" AND TotalScore="+TotalScore+" AND PointsForOneCorrectAnswer = "+PointsForOneCorrectAnswer+" ORDER\n" +
                 "    BY idTest DESC LIMIT 1;";
         ResultSet id = resultQuery(query);
         if(id.next()){
@@ -144,14 +145,15 @@ public class DatabaseHandler {
         return idTest;
     }
 
-    public Boolean addQuestions (Integer idTestQuestions,String QuestionWording, Integer TypeQues){
+    public Boolean addQuestions (Integer idTestQuestions,String QuestionWording, Integer TypeQues, Integer QuantityAnswer){
 
-        String query= "INSERT INTO  questions (idTestQuestions, QuestionWording, TypeQues)"+" VALUES (?,?,?)";
+        String query= "INSERT INTO  questions (idTestQuestions, QuestionWording, TypeQues,QuantityAnswer)"+" VALUES (?,?,?,?)";
         try {
             preStm = conn.prepareStatement(query);
             preStm.setInt(1,idTestQuestions);
             preStm.setString(2,QuestionWording);
             preStm.setInt(3,TypeQues);
+            preStm.setInt(4,QuantityAnswer);
             preStm.execute();
 //            conn.close();
             return true;
@@ -161,9 +163,9 @@ public class DatabaseHandler {
         }
     }
 
-    public Integer defineTheidQuestions(Integer idTestQuestions,String QuestionWording, Integer TypeQues) throws SQLException {
+    public Integer defineTheidQuestions(Integer idTestQuestions,String QuestionWording, Integer TypeQues, Integer QuantityAnswer) throws SQLException {
         Integer idQuestions = null;
-        String query = "SELECT idQuestions from questions where QuestionWording=\""+QuestionWording+"\" AND TypeQues="+TypeQues+" AND questions.idTestQuestions="+idTestQuestions+";";
+        String query = "SELECT idQuestions from questions where QuestionWording=\""+QuestionWording+"\" AND TypeQues="+TypeQues+" AND questions.idTestQuestions="+idTestQuestions+" AND QuantityAnswer="+QuantityAnswer+";";
         ResultSet id = resultQuery(query);
         if (id.next()){
             idQuestions = id.getInt("idQuestions");
@@ -335,7 +337,7 @@ public class DatabaseHandler {
     }
 
     public List getCorrectSecondTypeAnswers(Integer idPassedTest) throws SQLException{
-        List<QuestionsAnswersStudent> answers = new ArrayList();
+        List<QuestionsAnswersStudent> answers = new ArrayList<>();
         String query = "select  ansCorrect, ansStudent\n" +
                 "from\n" +
                 "(SELECT idQuestionAnswer, group_concat(distinct idAnswer) as ansCorrect\n" +
@@ -358,7 +360,7 @@ public class DatabaseHandler {
     }
 
     public List getCorrectThirdTypeAnswers(Integer idPassedTest) throws SQLException {
-        List<QuestionsAnswersStudent> answers = new ArrayList();
+        List<QuestionsAnswersStudent> answers = new ArrayList<>();
         String query = "select  ansCorrect, ansStudent\n" +
                 "from\n" +
                 "  (select answer.idQuestionAnswer as idOuest, answer.AnswerWording AS ansCorrect\n" +
@@ -406,6 +408,18 @@ public class DatabaseHandler {
             return false;
 
         }
+    }
+
+    public List getInfResultsTests (Integer idUser) throws SQLException {
+        List<ResultTests> resultsTest = new ArrayList<>();
+        String query = "select test.TitleTest AS TitleTest , passedtests.NumCorreсtAnswer AS numCor, passedtests.NumIncorreсtAnswer AS numIncorr\n" +
+                "from passedtests JOIN test ON passedtests.idTest = test.idTest\n" +
+                "WHERE idStudents ="+idUser+";";
+        ResultSet result = resultQuery(query);
+        while (result.next()){
+            resultsTest.add(new ResultTests(result.getString("TitleTest"),result.getInt("numCor"),result.getInt("numIncorr")));
+        }
+        return resultsTest;
     }
 
 

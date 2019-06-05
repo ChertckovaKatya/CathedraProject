@@ -9,17 +9,22 @@
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
+    <%@include file='patterns/panel_admin.jsp'%>
     <title>Title</title>
 </head>
 <body>
+
+<selection>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
 <c:forEach var="test" items="${tests}">
     <table>
-        <tr>
-            <p><a href="/testdemonstration?idTest=<c:out value="${test.idTest}"/>"><c:out value="${test.titleTest}"/></a></p>
-        </tr>
+    <p><a href="/testdemonstration?idTest=<c:out value="${test.idTest}"/>"><c:out value="${test.titleTest}"/></a></p>
     </table>
-
 </c:forEach>
 
+</selection>
 </body>
 </html>
