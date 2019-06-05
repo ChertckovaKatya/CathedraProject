@@ -412,12 +412,12 @@ public class DatabaseHandler {
 
     public List getInfResultsTests (Integer idUser) throws SQLException {
         List<ResultTests> resultsTest = new ArrayList<>();
-        String query = "select test.TitleTest AS TitleTest , passedtests.NumCorreсtAnswer AS numCor, passedtests.NumIncorreсtAnswer AS numIncorr\n" +
+        String query = "select test.TitleTest , passedtests.NumCorreсtAnswer, passedtests.NumIncorreсtAnswer\n" +
                 "from passedtests JOIN test ON passedtests.idTest = test.idTest\n" +
                 "WHERE idStudents ="+idUser+";";
         ResultSet result = resultQuery(query);
         while (result.next()){
-            resultsTest.add(new ResultTests(result.getString("TitleTest"),result.getInt("numCor"),result.getInt("numIncorr")));
+            resultsTest.add(new ResultTests(result.getString("TitleTest"),result.getString("passedtests.NumCorreсtAnswer"),result.getString("passedtests.NumIncorreсtAnswer")));
         }
         return resultsTest;
     }

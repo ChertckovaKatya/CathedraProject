@@ -13,18 +13,18 @@
     <title>Title</title>
 </head>
 <body>
-<div></div>
-<div></div>
-<header>
-</header>
-<selection>
-    <div></div>
-    <c:forEach var="results" items="${res}">
-        <table>
-            <p> Название теста: <c:out value="${results.titleTest}"/> Количество правильных/неправильных ответов: <c:out value="${results.NumCorr}"/> :  <c:out value="${results.NumIncorr}"/></p>
-        </table>
-    </c:forEach>
-</selection>
+        <div></div>
+        <div></div>
+    <header>
+    </header>
+    <selection>
+        <div></div>
+        <c:forEach var="results" items="${list}">
+            <table>
+                <p> Название теста: <c:out value="${results.titleTest}"/> Количество правильных/неправильных ответов: <c:out value="${results.numCorr}"/> :  <c:out value="${results.numIncorr}"/></p>
+            </table>
+        </c:forEach>
+    </selection>
 
 </body>
 </html>

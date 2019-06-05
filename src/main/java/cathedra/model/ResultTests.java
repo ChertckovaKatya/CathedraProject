@@ -1,14 +1,14 @@
 package cathedra.model;
 
 public class ResultTests {
-    private String titleTest;
-    private Integer NumCorr;
-    private Integer NumIncorr;
+    public String titleTest;
+    public String NumCorr;
+    public String NumIncorr;
 
-    public ResultTests(String titleTest, Integer NumCorr, Integer NumIncorr) {
+    public ResultTests(String titleTest, String numCorr, String numIncorr) {
         this.titleTest = titleTest;
-        NumCorr = NumCorr;
-        NumIncorr = NumIncorr;
+        this.NumCorr = numCorr;
+        this.NumIncorr = numIncorr;
     }
 
     public ResultTests() {
@@ -18,24 +18,12 @@ public class ResultTests {
         return titleTest;
     }
 
-    public void setTitleTest(String titleTest) {
-        this.titleTest = titleTest;
-    }
-
-    public Integer getNumCorr() {
+    public String getNumCorr() {
         return NumCorr;
     }
 
-    public void setNumCorr(Integer numCorr) {
-        NumCorr = numCorr;
-    }
-
-    public Integer getNumIncorr() {
+    public String getNumIncorr() {
         return NumIncorr;
-    }
-
-    public void setNumIncorr(Integer numIncorr) {
-        NumIncorr = numIncorr;
     }
 
     @Override

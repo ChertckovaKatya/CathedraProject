@@ -15,10 +15,7 @@
 <body>
 
 <selection>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
+
 <c:forEach var="test" items="${tests}">
     <table>
     <p><a href="/testdemonstration?idTest=<c:out value="${test.idTest}"/>"><c:out value="${test.titleTest}"/></a></p>

@@ -17,11 +17,12 @@ import java.util.List;
 public class OutputTestResultServlet extends HttpServlet {
 
     Integer idUser;
-
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request,response);
     }
 
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         DatabaseHandler db = new DatabaseHandler();
         List <ResultTests> list = null;
@@ -38,9 +39,9 @@ public class OutputTestResultServlet extends HttpServlet {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
+            System.out.println(list.toString());
 
-
-            request.setAttribute("res",list);
+            request.setAttribute("list",list);
         request.getRequestDispatcher("/view_of_main_pages/outputTestResults.jsp").forward(request, response);
     }
     }
