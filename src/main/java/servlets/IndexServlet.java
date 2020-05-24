@@ -9,9 +9,9 @@ import java.io.IOException;
 
 @WebServlet("/")
 public class IndexServlet extends HttpServlet {
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.sendRedirect("/index.jsp");
-    }
+//    @Override
+//    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//        resp.sendRedirect("/index.jsp");
+//    }
 
 }
