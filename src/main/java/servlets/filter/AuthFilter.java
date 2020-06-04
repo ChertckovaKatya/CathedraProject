@@ -21,13 +21,12 @@ public class AuthFilter implements javax.servlet.Filter {
     }
 
     @Override
-    public void doFilter(javax.servlet.ServletRequest req, javax.servlet.ServletResponse resp, javax.servlet.FilterChain chain) throws javax.servlet.ServletException, IOException {
+    public void doFilter(javax.servlet.ServletRequest req, javax.servlet.ServletResponse resp, javax.servlet.FilterChain chain)
+            throws javax.servlet.ServletException, IOException {
         System.out.println("doFilter");
 
         final HttpServletRequest request = (HttpServletRequest) req;
         final HttpServletResponse response = (HttpServletResponse) resp;
-
-
 
         final String login = request.getParameter("login");
         final String password = request.getParameter("password");

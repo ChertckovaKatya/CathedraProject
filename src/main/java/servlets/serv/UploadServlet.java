@@ -6,7 +6,6 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,7 +15,6 @@ import java.util.Iterator;
 import java.util.List;
 
 
-@WebServlet(name = "UploadServlet")
 public class UploadServlet extends HttpServlet {
     private boolean isMultipart;
     private String filePath;
@@ -116,7 +114,6 @@ public class UploadServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.getRequestDispatcher("/view_of_main_pages/download.jsp").forward(request, response);
-//            throw new ServletException("GET method used with " +
-//                    getClass( ).getName( )+": POST method required.");
+
     }
 }

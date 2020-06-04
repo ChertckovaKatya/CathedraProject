@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v4.0.1">
+    <title>Carousel Template · Bootstrap</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/carousel/">
+
+    <!-- Bootstrap core CSS -->
+    <link href="../assets/dist/css/bootstrap.css" rel="stylesheet">
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+
+        hr {
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            border: 0;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="carousel.css" rel="stylesheet">
+</head>
+<body>
+<header>
+    <div class="container">
+        <div class="py-5 text-center">
+            <img class="d-block mx-auto mb-4" src="logotip.png" alt="" width="440" height="183">
+            <h2>Кафедра Системного анализа и управления</h2>
+            <p class="lead"></p>
+        </div>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">О кафедре </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Галерея</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Библиотека </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="#">Контакты</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Загрузить тест <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="#">Результаты</a>
+                    </li>
+                </ul>
+                </form>
+                <form class="form-inline mt-2 mt-md-0">
+                    <button class="btn btn-danger my-2 my-sm-0"  type="submit">Выйти</button>
+                </form>
+            </div>
+        </nav>
+
+
+</header>
+<main>
+    <div class="container">
+        <hr>
+        <div class="card">
+            <div class="card-header">
+                Загрузка файла
+            </div>
+            <div class="card-body">
+                <form>
+                    <form class="form-inline">
+                    <div class="col-auto my-1">
+                        <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
+                        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                            <option selected>Выберите курс</option>
+                            <option value="1">1 курс</option>
+                            <option value="2">2 курс</option>
+                            <option value="3">3 курс</option>
+                            <option value="3">4 курс</option>
+                            <option value="3">5 курс (1 курс магистратуры)</option>
+                            <option value="3">6 курс (2 курс магистратуры)</option>
+                        </select>
+                    </div>
+                    </form>
+                    <div class="form-group">
+                        <label for="exampleFormControlFile1"></label>
+                        <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <hr>
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+
+
+        </ul>
+        <ul class="nav nav-tabs" id="myTab1" role="tablist">
+            <li class="nav-item" role="presentation">
+                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#first_course" role="tab" aria-controls="home"
+                   aria-selected="true">1 курс</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#second_course" role="tab" aria-controls="profile"
+                   aria-selected="false">2 курс</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link" id="contact-tab" data-toggle="tab" href="#third_course" role="tab" aria-controls="contact"
+                   aria-selected="false">3 курс</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link" id="contact-tab2" data-toggle="tab" href="#fourth_course" role="tab" aria-controls="contact"
+                   aria-selected="false">4 курс</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link" id="contact-tab3" data-toggle="tab" href="#fifth_course" role="tab" aria-controls="contact"
+                   aria-selected="false">5 курс</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link" id="contact-tab4" data-toggle="tab" href="#sixth_course" role="tab" aria-controls="contact"
+                   aria-selected="false">6 курс</a>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent1">
+            <div class="tab-pane fade show active" id="first_course" role="tabpanel" aria-labelledby="home-tab">
+                <ul class="list-group">
+                <li class="list-group-item">Алгебра и геометрия</li>
+                <li class="list-group-item">Алгебра и геометрия</li>
+                <li class="list-group-item list-group-item-primary">Математический анализ</li>
+                <li class="list-group-item list-group-item-primary">Математический анализ</li>
+
+                </ul>
+            </div>
+            <div class="tab-pane fade" id="second_course" role="tabpanel" aria-labelledby="profile-tab">
+                <ul class="list-group">
+                    <li class="list-group-item list-group-item-warning">Функциональный анализ</li>
+                    <li class="list-group-item list-group-item-warning">Функциональный анализ</li>
+                    <li class="list-group-item list-group-item-success">Дифференциальные уравнения </li>
+                    <li class="list-group-item list-group-item-success">Дифференциальные уравнения </li>
+                </ul>
+            </div>
+            <div class="tab-pane fade" id="third_course" role="tabpanel" aria-labelledby="contact-tab">
+                <ul class="list-group">
+                    <li class="list-group-item list-group-item-danger">Методы оптимизации </li>
+                    <li class="list-group-item list-group-item-danger">Методы оптимизации </li>
+                </ul>
+            </div>
+            <div class="tab-pane fade" id="fourth_course" role="tabpanel" aria-labelledby="contact-tab">
+                <ul class="list-group">
+                    <li class="list-group-item list-group-item-info">Функциональный анализ и методы оптимизации </li>
+                    <li class="list-group-item list-group-item-info">Функциональный анализ и методы оптимизации </li>
+                </ul>
+            </div>
+            <div class="tab-pane fade" id="fifth_course" role="tabpanel" aria-labelledby="contact-tab">
+                <ul class="list-group">
+                    <li class="list-group-item list-group-item-light">Непрерывные математические модели </li>
+                    <li class="list-group-item list-group-item-light">Непрерывные математические модели </li>
+                </ul>
+            </div>
+            <div class="tab-pane fade" id="sixth_course" role="tabpanel" aria-labelledby="contact-tab">
+                <ul class="list-group">
+                    <li class="list-group-item list-group-item-dark">Периодические системы</li>
+                    <li class="list-group-item list-group-item-dark">Периодические системы</li>
+                </ul>
+            </div>
+        </div>
+        <hr>
+    </div>
+
+
+
+
+    <!-- FOOTER -->
+    <footer class="container">
+        <p class="float-right"><a href="#"></a></p>
+        <p>Department of System Analysis and Management<a href="#"></a> &middot; <a href="#"></a></p>
+    </footer>
+</main>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="../assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="../assets/dist/js/bootstrap.bundle.js"></script></body>
+</html>

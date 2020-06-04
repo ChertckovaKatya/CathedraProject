@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "NewServlet")
 public class NewServlet extends HttpServlet {
 
     int[] array = {1,2,3};

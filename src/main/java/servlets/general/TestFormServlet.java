@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "TestFormServlet")
 public class TestFormServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -15,7 +14,7 @@ public class TestFormServlet extends HttpServlet {
 
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/view_of_main_pages/test_dir/test_form.jsp").forward(request, response);
+        request.getRequestDispatcher("WEB-INF/view_of_main_pages/test_dir/test_form.jsp").forward(request, response);
     }
 
 }

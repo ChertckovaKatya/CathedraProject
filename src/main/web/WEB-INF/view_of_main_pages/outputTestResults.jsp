@@ -21,7 +21,7 @@
         <div></div>
         <c:forEach var="results" items="${list}">
             <table>
-                <p>  Тест: <c:out value="${results.titleTest}"/> Количество правильных/неправильных ответов: <c:out value="${results.numCorr}"/> :  <c:out value="${results.numIncorr}"/></p>
+                <p>   Тест: <c:out value="${results.titleTest}"/> Количество правильных/неправильных ответов: <c:out value="${results.numCorr}"/> :  <c:out value="${results.numIncorr}"/></p>
             </table>
         </c:forEach>
     </selection>

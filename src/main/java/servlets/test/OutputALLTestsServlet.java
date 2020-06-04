@@ -12,7 +12,6 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-@WebServlet(name = "OutputALLTestsServlet")
 
 public class OutputALLTestsServlet extends HttpServlet {
 

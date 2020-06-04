@@ -14,7 +14,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet(name = "CreatTestServlet")
+
 public class CreatTestServlet extends HttpServlet {
     private Integer quantity_questions = null;
     private int i = 0;
