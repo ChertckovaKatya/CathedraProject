@@ -15,14 +15,14 @@ public class FileProcessing {
     DatabaseHandler db = new DatabaseHandler();
     Integer size;
 
-    public Boolean  parsingFile (String name) throws IOException, SQLException {
+    public Boolean parsingFile(String name) throws IOException, SQLException {
 
-        File file = new File("D://ProjectCathedra//src//main//java//allFilesTXT",name);
+        File file = new File("D://ProjectCathedra//src//main//java//allFilesTXT", name);
         File catalog = new File("D://ProjectCathedra//src//main//java//allFilesTXT");
         if (file.isFile()) {
             List<String> lines;
-            Path filePars = Paths.get("D://ProjectCathedra//src//main//java//allFilesTXT",name);
-            if (filePars!=null) {
+            Path filePars = Paths.get("D://ProjectCathedra//src//main//java//allFilesTXT", name);
+            if (filePars != null) {
                 lines = Files.readAllLines(filePars, StandardCharsets.UTF_8);
                 String first = lines.get(0);
                 String[] parametersTest = first.split("\\|");
@@ -33,14 +33,13 @@ public class FileProcessing {
                 Integer LeadTime = Integer.valueOf(parametersTest[3]);               // Время выполнения теста
                 Integer TotalScore = Integer.valueOf(parametersTest[4]);             //Общий балл за тест
                 Integer pointsForOneAnswer = Integer.valueOf(parametersTest[5]);
-                if (idSubject!=null) {
-                    Boolean TestAdded = db.addTest(idSubject,titleTest, NumberOfQuestions, LeadTime, TotalScore,pointsForOneAnswer); // добавляем данные теста
-                    Integer idTest = db.defineTheidTest(idSubject,titleTest, NumberOfQuestions, LeadTime, TotalScore,pointsForOneAnswer);  // выясняем id теста, который только что добавили
-                    if (TestAdded && idTest!=null) {
-                        if (NumberOfQuestions>(lines.size()-1)){
-                            size = lines.size()-1;
-                        }
-                        else{
+                if (idSubject != null) {
+                    Boolean TestAdded = db.addTest(idSubject, titleTest, NumberOfQuestions, LeadTime, TotalScore, pointsForOneAnswer); // добавляем данные теста
+                    Integer idTest = db.defineTheidTest(idSubject, titleTest, NumberOfQuestions, LeadTime, TotalScore, pointsForOneAnswer);  // выясняем id теста, который только что добавили
+                    if (TestAdded && idTest != null) {
+                        if (NumberOfQuestions > (lines.size() - 1)) {
+                            size = lines.size() - 1;
+                        } else {
                             size = NumberOfQuestions;
                         }
                         for (int i = 0; i < size; i++) {
@@ -49,19 +48,19 @@ public class FileProcessing {
                             Integer typeQuestions = Integer.valueOf(QuestionsAnswer[0]); // тип вопроса
                             String Questions = QuestionsAnswer[1]; // вопрос
                             Integer NumberAnswer = Integer.valueOf(QuestionsAnswer[2]);
-                            Boolean QuestionsAdded = db.addQuestions(idTest, Questions, typeQuestions,NumberAnswer); // добавляем тип вопроса и его формулировку
+                            Boolean QuestionsAdded = db.addQuestions(idTest, Questions, typeQuestions, NumberAnswer); // добавляем тип вопроса и его формулировку
 
                             if (QuestionsAdded) {
 
-                                Integer idQuestions = db.defineTheidQuestions(idTest, Questions, typeQuestions,NumberAnswer); //выясняем id вопроса, который только что добавили
-                                if (idQuestions !=null) {
+                                Integer idQuestions = db.defineTheidQuestions(idTest, Questions, typeQuestions, NumberAnswer); //выясняем id вопроса, который только что добавили
+                                if (idQuestions != null) {
                                     for (int j = 3; j < (NumberAnswer * 2) + 2; j = j + 2) {
                                         String Answer = QuestionsAnswer[j];  //вариант ответа
                                         Integer Mark = Integer.valueOf(QuestionsAnswer[j + 1]); // количество баллов за вариант ответа
 
-                                        Boolean AnswerAdded = db.addAnswer(idQuestions,Answer,Mark);
+                                        Boolean AnswerAdded = db.addAnswer(idQuestions, Answer, Mark);
 
-                                        if (AnswerAdded){
+                                        if (AnswerAdded) {
                                             System.out.println("Варианты ответов успешно добавлены");
                                         }
                                     }
@@ -69,37 +68,35 @@ public class FileProcessing {
                                 }
                             }
                         }
-                        if (catalog.exists()){
+                        if (catalog.exists()) {
                             Files.delete(filePars);
                         }
                         return true;
                     }
 
-                }
-                else {
+                } else {
                     System.out.println("Укажите корректное название предмета");
-                    if (catalog.exists()){
+                    if (catalog.exists()) {
                         Files.delete(filePars);
                     }
                     return false;
                 }
 
             }
-        }
-        else{
-            if (catalog.exists()){
-            Path filePars = Paths.get("D://ProjectCathedra//src//main//java//allFilesTXT",name);
-            Files.delete(filePars);
-        }
+        } else {
+            if (catalog.exists()) {
+                Path filePars = Paths.get("D://ProjectCathedra//src//main//java//allFilesTXT", name);
+                Files.delete(filePars);
+            }
             System.out.println("не прошел проверку");
             return false;
         }
-        if (catalog.exists()){
-            Path filePars = Paths.get("D://ProjectCathedra//src//main//java//allFilesTXT",name);
+        if (catalog.exists()) {
+            Path filePars = Paths.get("D://ProjectCathedra//src//main//java//allFilesTXT", name);
             Files.delete(filePars);
         }
         return false;
     }
 
-    }
+}
 

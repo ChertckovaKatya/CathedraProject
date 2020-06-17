@@ -70,9 +70,6 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="#">Тесты<span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="#">Результаты</a>
-                    </li>
                 </ul>
                 </form>
                 <form class="form-inline mt-2 mt-md-0">
@@ -85,6 +82,7 @@
 </header>
 <main>
     <div class="container">
+        <!-----------------------------------COLLAPSE------------------------------------>
         <hr>
         <div class="accordion" id="accordionExample">
             <div class="card">
@@ -100,11 +98,56 @@
                 <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
                      data-parent="#accordionExample">
                     <div class="card-body">
-                        <ul class="list-group">
-                            <a href="#" class="list-group-item list-group-item-action">Алгебра и геометрия</a>
-                            <a href="#" class="list-group-item list-group-item-action">Алгебра и геометрия</a>
-
-                        </ul>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Применения алгоритма Гаусса—Жордана</h5>
+                                        <p class="card-text"> Время прохождения теста: 40 мин</p>
+                                        <div class="progress">
+                                            <div class="progress-bar bg-danger" role="progressbar"
+                                                 style="width: 0%;" aria-valuenow="25" aria-valuemin="0"
+                                                 aria-valuemax="100">25%
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <a href="#" class="btn btn-primary">Начать</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title"> Матрицы и линейные операции над ними </h5>
+                                        <p class="card-text">Время прохождения теста: 45 мин</p>
+                                        <div class="progress">
+                                            <div class="progress-bar bg-success" role="progressbar"
+                                                 style="width: 85%;" aria-valuenow="25" aria-valuemin="0"
+                                                 aria-valuemax="100">85%
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <button type="button" class="btn btn-primary" disabled>Начать</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Произведение матриц</h5>
+                                        <p class="card-text">Время прохождения теста: 45 мин</p>
+                                        <div class="progress">
+                                            <div class="progress-bar bg-danger" role="progressbar"
+                                                 style="width: 25%;" aria-valuenow="25" aria-valuemin="0"
+                                                 aria-valuemax="100">25%
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <button type="button" class="btn btn-primary" disabled>Начать</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -119,32 +162,17 @@
                 </div>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                     <div class="card-body">
-                        <a href="#" class="list-group-item list-group-item-action list-group-item-primary">Математический
-                            анализ</a>
-                        <a href="#" class="list-group-item list-group-item-action list-group-item-primary">Математический
-                            анализ</a>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-header" id="headingThree">
-                    <h2 class="mb-0">
-                        <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse"
-                                data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                            Collapsible Group Item #3
-                        </button>
-                    </h2>
-                </div>
-                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                    <div class="card-body">
                         <div class="row">
                             <div class="col-sm-4">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h5 class="card-title">Однородные дифференциальные уравнения</h5>
+                                        <h5 class="card-title">Множества</h5>
                                         <p class="card-text"> Время прохождения теста 40 мин</p>
                                         <div class="progress">
-                                            <div class="progress-bar bg-danger" role="progressbar" style="width: 0%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                                            <div class="progress-bar bg-danger" role="progressbar"
+                                                 style="width: 0%;" aria-valuenow="25" aria-valuemin="0"
+                                                 aria-valuemax="100">25%
+                                            </div>
                                         </div>
                                         <hr>
                                         <a href="#" class="btn btn-primary">Начать</a>
@@ -154,10 +182,13 @@
                             <div class="col-sm-4">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h5 class="card-title">Неоднородные дифференциальные уравнения </h5>
+                                        <h5 class="card-title">Дифференциальное исчисление функции одной переменной</h5>
                                         <p class="card-text">Время прохождения теста 45 мин</p>
                                         <div class="progress">
-                                            <div class="progress-bar bg-success" role="progressbar" style="width: 85%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">85%</div>
+                                            <div class="progress-bar bg-success" role="progressbar"
+                                                 style="width: 85%;" aria-valuenow="25" aria-valuemin="0"
+                                                 aria-valuemax="100">85%
+                                            </div>
                                         </div>
                                         <hr>
                                         <button type="button" class="btn btn-primary" disabled>Начать</button>
@@ -167,45 +198,16 @@
                             <div class="col-sm-4">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h5 class="card-title">Special title treatment</h5>
-                                        <p class="card-text">With supporting text below as a natural lead-in to
-                                            additional content.</p>
-                                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-sm-4">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Special title treatment</h5>
-                                        <p class="card-text">With supporting text below as a natural lead-in to
-                                            additional content.</p>
-                                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-4">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Special title treatment</h5>
-                                        <p class="card-text">With supporting text below as a natural lead-in to
-                                            additional content.</p>
-                                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-4">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Special title treatment</h5>
-                                        <p class="card-text">With supporting text below as a natural lead-in to
-                                            additional content.</p>
-                                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                                        <h5 class="card-title">Функциональные ряды</h5>
+                                        <p class="card-text">Время прохождения теста 45 мин</p>
+                                        <div class="progress">
+                                            <div class="progress-bar bg-warning" role="progressbar"
+                                                 style="width: 75%;" aria-valuenow="25" aria-valuemin="0"
+                                                 aria-valuemax="100">75%
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <button type="button" class="btn btn-primary" disabled>Начать</button>
                                     </div>
                                 </div>
                             </div>
@@ -215,101 +217,11 @@
             </div>
         </div>
 
-        <hr>
-        <ul class="nav nav-tabs" id="myTab" role="tablist">
-        </ul>
-        <ul class="nav nav-tabs" id="myTab1" role="tablist">
-            <li class="nav-item" role="presentation">
-                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#first_course" role="tab"
-                   aria-controls="home"
-                   aria-selected="true">1 курс</a>
-            </li>
-            <li class="nav-item" role="presentation">
-                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#second_course" role="tab"
-                   aria-controls="profile"
-                   aria-selected="false">2 курс</a>
-            </li>
-            <li class="nav-item" role="presentation">
-                <a class="nav-link" id="contact-tab" data-toggle="tab" href="#third_course" role="tab"
-                   aria-controls="contact"
-                   aria-selected="false">3 курс</a>
-            </li>
-            <li class="nav-item" role="presentation">
-                <a class="nav-link" id="contact-tab2" data-toggle="tab" href="#fourth_course" role="tab"
-                   aria-controls="contact"
-                   aria-selected="false">4 курс</a>
-            </li>
-            <li class="nav-item" role="presentation">
-                <a class="nav-link" id="contact-tab3" data-toggle="tab" href="#fifth_course" role="tab"
-                   aria-controls="contact"
-                   aria-selected="false">5 курс</a>
-            </li>
-            <li class="nav-item" role="presentation">
-                <a class="nav-link" id="contact-tab4" data-toggle="tab" href="#sixth_course" role="tab"
-                   aria-controls="contact"
-                   aria-selected="false">6 курс</a>
-            </li>
-        </ul>
-        <div class="tab-content" id="myTabContent1">
-            <div class="tab-pane fade show active" id="first_course" role="tabpanel" aria-labelledby="home-tab">
-                <ul class="list-group">
-                    <a href="#" class="list-group-item list-group-item-action">Алгебра и геометрия</a>
-                    <a href="#" class="list-group-item list-group-item-action">Алгебра и геометрия</a>
-                    <a href="#" class="list-group-item list-group-item-action list-group-item-primary">Математический
-                        анализ</a>
-                    <a href="#" class="list-group-item list-group-item-action list-group-item-primary">Математический
-                        анализ</a>
-                </ul>
-            </div>
-            <div class="tab-pane fade" id="second_course" role="tabpanel" aria-labelledby="profile-tab">
-                <ul class="list-group">
-                    <a href="#" class="list-group-item list-group-item-action list-group-item-warning">Функциональный
-                        анализ</a>
-                    <a href="#" class="list-group-item list-group-item-action list-group-item-warning">Функциональный
-                        анализ</a>
-                    <a href="#" class="list-group-item list-group-item-action list-group-item-success">Дифференциальные
-                        уравнения</a>
-                    <a href="#" class="list-group-item list-group-item-action list-group-item-success">Дифференциальные
-                        уравнения</a>
-                </ul>
-            </div>
-            <div class="tab-pane fade" id="third_course" role="tabpanel" aria-labelledby="contact-tab">
-                <ul class="list-group">
-                    <a href="#" class="list-group-item list-group-item-action list-group-item-danger">Методы
-                        оптимизации</a>
-                    <a href="#" class="list-group-item list-group-item-action list-group-item-danger">Методы
-                        оптимизации</a>
-                </ul>
-            </div>
-            <div class="tab-pane fade" id="fourth_course" role="tabpanel" aria-labelledby="contact-tab">
-                <ul class="list-group">
-                    <a href="#" class="list-group-item list-group-item-action list-group-item-info">Функциональный
-                        анализ и
-                        методы оптимизации</a>
-                    <a href="#" class="list-group-item list-group-item-action list-group-item-info">Функциональный
-                        анализ и
-                        методы оптимизации</a>
-                </ul>
-            </div>
-            <div class="tab-pane fade" id="fifth_course" role="tabpanel" aria-labelledby="contact-tab">
-                <ul class="list-group">
-                    <a href="#" class="list-group-item list-group-item-action list-group-item-light">Непрерывные
-                        математические модели</a>
-                    <a href="#" class="list-group-item list-group-item-action list-group-item-light">Непрерывные
-                        математические модели</a>
-                </ul>
-            </div>
-            <div class="tab-pane fade" id="sixth_course" role="tabpanel" aria-labelledby="contact-tab">
-                <ul class="list-group">
-                    <a href="#" class="list-group-item list-group-item-action list-group-item-secondary">Периодические
-                        системы</a>
-                    <a href="#" class="list-group-item list-group-item-action list-group-item-secondary">Периодические
-                        системы</a>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <hr>
+
+        <!------------------------------------THE END COLLAPSE------------------------------------>
+
+
+            <hr>
     </div>
 
 
